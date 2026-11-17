@@ -67,15 +67,15 @@ h1{font-weight:200;color:var(--ink);font-size:clamp(30px,4.5vw,62px);line-height
 
 /* the current: project cards drifting past the centre */
 .flow{position:relative;overflow:hidden;padding:26px 0 34px;cursor:grab;touch-action:pan-y;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .flow.drag{cursor:grabbing}
 .track{display:flex;gap:var(--g);width:max-content;will-change:transform}
-.card{flex:none;width:clamp(180px,min(25vw,calc((100svh - 330px)*.75)),420px);text-decoration:none;display:grid;justify-items:center;gap:10px;will-change:transform;-webkit-user-drag:none;user-select:none}
+.card{flex:none;width:clamp(180px,min(25vw,calc((100svh - 370px)*.75)),420px);text-decoration:none;display:grid;justify-items:center;gap:10px;will-change:transform;-webkit-user-drag:none;user-select:none}
 .card .ph{display:block;width:100%;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:var(--panel)}
 .card img{width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform 1.2s var(--ease)}
 .card:hover img{transform:scale(1.04)}
 .card .t{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:400;margin-top:4px}
-.card .s{font-size:13px;color:var(--muted);margin-top:-8px}
+.card .s{font-size:13px;color:var(--text);margin-top:-8px}
 
 /* project */
 .view{padding-top:clamp(18px,2.4vw,32px)}
@@ -212,12 +212,13 @@ body[data-view=home] .foot,body[data-view=contact] .foot{display:none}
 .opening.off{display:none}
 @keyframes pressin{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.js .home .flow,.js .home .all{opacity:0;transform:translateY(18px);transition:opacity 1.1s var(--ease),transform 1.3s var(--ease)}
+.what{margin:0 0 clamp(4px,1.2vh,14px);text-align:center;color:var(--muted);font-size:11px;padding:0 var(--pad)}
+.js .home .what,.js .home .flow,.js .home .all{opacity:0;transform:translateY(18px);transition:opacity 1.1s var(--ease),transform 1.3s var(--ease)}
 .js .home .all{transition-delay:.25s}
-.js .home.ready .flow,.js .home.ready .all{opacity:1;transform:none}
+.js .home.ready .what,.js .home.ready .flow,.js .home.ready .all{opacity:1;transform:none}
 
 @media (max-width:760px){
-  .card{width:clamp(180px,min(58vw,calc((100svh - 330px)*.75)),420px)}
+  .card{width:clamp(180px,min(58vw,calc((100svh - 380px)*.75)),420px)}
   .tile.c4{grid-column:span 6}
   .press .y{grid-column:span 3}.press .k{grid-column:span 9;text-align:right}
   .press .d{grid-column:1 / -1;padding-top:8px}
@@ -227,7 +228,7 @@ body[data-view=home] .foot,body[data-view=contact] .foot{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .opening .hn,.opening .nm{animation:none;opacity:1}
-  .js .home .flow,.js .home .all{opacity:1;transform:none;transition:none}
+  .js .home .what,.js .home .flow,.js .home .all{opacity:1;transform:none;transition:none}
 }
 .lede{max-width:62ch;margin:clamp(28px,4.5vw,64px) auto clamp(36px,5vw,72px);text-align:center;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--text);text-wrap:balance}
 .card .ph,.tile .ph{position:relative}
@@ -263,13 +264,14 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
 
 <main>
   <section class="view home" data-view="home">
+    <p class="what caps">Interior design for hospitality and retail</p>
     <section class="flow" aria-label="Projects">
     <div class="track">
-        <a class="card" href="#/couched"><span class="ph"><img src="img/couched-01-entrance.jpg" alt="COUCHED boutique entrance, a loop of overlapping metal discs around a doorway"></span><span class="t">Couched</span><span class="s">Retail boutique</span></a>
-        <a class="card" href="#/maille"><span class="ph"><img src="img/maille-04-corridor.jpg" alt="Maille hotel corridor with a band of beadwork along a curved plaster wall"></span><span class="t">Maille</span><span class="s">Hotel, Dubai</span></a>
-        <a class="card" href="#/kaolin"><span class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Kaolin arrival hall with circular openings framing the sea"></span><span class="t">Kaolin</span><span class="s">Coastal hotel</span></a>
-        <a class="card" href="#/laque"><span class="ph"><img src="img/laque-01-lounge.jpg" alt="Laque lounge with curved lacquer and tinted glass screens"></span><span class="t">Laque</span><span class="s">Thermal house and hotel</span></a>
-        <a class="card" href="#/rocaille"><span class="ph"><img src="img/rocaille-06-reception.jpg" alt="Rocaille reception hall with folded mosaic walls, stone flowers and a carved stone desk"></span><span class="t">Rocaille</span><span class="s">Hotel and spa</span></a>
+        <a class="card" href="#/couched"><span class="ph"><img src="img/couched-01-entrance.jpg" alt="COUCHED boutique entrance, a loop of overlapping metal discs around a doorway"></span><span class="t">Couched</span><span class="s">Retail boutique concept</span></a>
+        <a class="card" href="#/maille"><span class="ph"><img src="img/maille-04-corridor.jpg" alt="Maille hotel corridor with a band of beadwork along a curved plaster wall"></span><span class="t">Maille</span><span class="s">Hotel concept · Dubai</span></a>
+        <a class="card" href="#/kaolin"><span class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Kaolin arrival hall with circular openings framing the sea"></span><span class="t">Kaolin</span><span class="s">Coastal hotel concept</span></a>
+        <a class="card" href="#/laque"><span class="ph"><img src="img/laque-01-lounge.jpg" alt="Laque lounge with curved lacquer and tinted glass screens"></span><span class="t">Laque</span><span class="s">Thermal house and hotel concept</span></a>
+        <a class="card" href="#/rocaille"><span class="ph"><img src="img/rocaille-06-reception.jpg" alt="Rocaille reception hall with folded mosaic walls, stone flowers and a carved stone desk"></span><span class="t">Rocaille</span><span class="s">Hotel and spa concept</span></a>
     </div>
     </section>
     <div class="wrap"><a class="all caps" href="#/projects"><span>All projects</span></a></div>
@@ -352,8 +354,8 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
         <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/maille-05-spa.jpg" alt="Spa treatment room with a single band of beadwork" loading="lazy"></div><figcaption>Spa: reduce</figcaption></figure>
       </div>
       <div class="row">
-        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/maille-06-linen.jpg" alt="Material study: beads stitched into linen" loading="lazy"></div><figcaption>Material study: bead on linen</figcaption></figure>
-        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/maille-07-plaster.jpg" alt="Material study: beads set in plaster" loading="lazy"></div><figcaption>Material study: bead in plaster</figcaption></figure>
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/maille-06-linen.jpg" alt="Digital material study: beads stitched into linen" loading="lazy"></div><figcaption>Digital material study: bead on linen</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/maille-07-plaster.jpg" alt="Digital material study: beads set in plaster" loading="lazy"></div><figcaption>Digital material study: bead in plaster</figcaption></figure>
       </div>
       <nav class="pager caps" aria-label="More projects">
         <a href="#/couched">← Couched</a>
@@ -488,7 +490,7 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
   </section>
   <section class="view contact" data-view="contact">
     <img class="hn big" src="img/hn-press.png" alt="" width="895" height="1000">
-    <p class="enq caps">For enquiries</p>
+    <p class="enq caps">For concept design, studio collaborations and press</p>
     <a class="mail" href="mailto:hadisnarmani@gmail.com">hadisnarmani@gmail.com</a>
     <div class="links caps">
       <a href="https://www.behance.net/hadisnarimani1">Behance</a>
