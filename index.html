@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hadis Narimani Interior Design</title>
+<meta name="description" content="Hadis Narimani, commercial interior designer. Retail and hospitality concepts built from fashion and craft construction.">
+<link rel="icon" type="image/png" href="img/favicon.png?v=3">
+<link rel="preload" href="fonts/tenor-sans.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Tenor Sans";src:url(fonts/tenor-sans.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Hanken Grotesk";src:url(fonts/hanken-grotesk.woff2) format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+/* One 12-column grid and one centre axis. Everything sits on the same lines:
+   the name and the mark on the axis, text and images on columns 1, 5, 7 and 9.
+   The only colour is the water blue of the HN mark; movement is slow, like a current. */
+:root{
+  --paper:#f4f4f1;
+  --ink:#101417;
+  --text:#3f474c;
+  --muted:#6b7378;
+  --line:#d6d8d3;
+  --panel:#e9eae6;
+  --blue:#2d6480;
+  --blue-light:#8fb9d0;
+  --deep:#0b0c0e;
+  --g:clamp(12px,1.6vw,24px);
+  --pad:clamp(18px,4vw,48px);
+  --display:"Tenor Sans","Hanken Grotesk",system-ui,sans-serif;
+  --font:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--paper) url(img/paper.png) 0 0/320px;color:var(--text);font-family:var(--font);font-weight:300;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+a:focus-visible{outline:1px solid var(--blue);outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+.c12{grid-column:span 12}.c6{grid-column:span 6}.c4{grid-column:span 4}
+.caps{font-family:var(--display);font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400}
+
+/* the HN mark: the brush drawing is used as a mask and a slow blue current runs through it */
+.mark{display:block;aspect-ratio:632/720;-webkit-mask:url(img/hn-mark.png) center/contain no-repeat;mask:url(img/hn-mark.png) center/contain no-repeat;
+  background:linear-gradient(115deg,#0b1c28 0%,#1f4f68 32%,#5b93b1 50%,#1f4f68 68%,#0b1c28 100%);background-size:300% 300%;animation:current 14s linear infinite}
+.mark.light{background-image:linear-gradient(115deg,#4f8fb3 0%,#a9d0e4 30%,#ffffff 50%,#a9d0e4 70%,#4f8fb3 100%)}
+@keyframes current{from{background-position:100% 50%}to{background-position:-50% 50%}}
+
+/* header: name on the centre axis */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:60px}
+.top nav{display:flex;gap:clamp(16px,2.4vw,34px)}
+.top nav.r{justify-content:flex-end}
+.top a{text-decoration:none;color:var(--muted);transition:color .3s}
+.top a:hover{color:var(--ink)}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink)!important;letter-spacing:.34em!important}
+.brand .mark{width:20px}
+
+/* opening */
+.intro{text-align:center;padding-top:clamp(40px,6vw,88px);padding-bottom:clamp(48px,7vw,96px)}
+.intro .mark{width:clamp(84px,10vw,132px);margin:0 auto clamp(28px,4vw,48px)}
+h1{font-weight:200;color:var(--ink);font-size:clamp(30px,4.5vw,62px);line-height:1.08;letter-spacing:-.02em;margin:0 auto;text-wrap:balance}
+.intro p{max-width:84ch;margin:clamp(20px,2.6vw,30px) auto 0;text-wrap:balance}
+.intro .award{max-width:none;margin-top:clamp(22px,3vw,34px);color:var(--muted);line-height:2}
+.intro .award b{font-weight:400;color:var(--blue)}
+
+/* the current: project cards drifting past the centre */
+.flow{position:relative;overflow:hidden;padding:26px 0 34px;cursor:grab;touch-action:pan-y;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.flow.drag{cursor:grabbing}
+.track{display:flex;gap:var(--g);width:max-content;will-change:transform}
+.card{flex:none;width:clamp(180px,min(25vw,calc((100svh - 330px)*.75)),420px);text-decoration:none;display:grid;justify-items:center;gap:10px;will-change:transform;-webkit-user-drag:none;user-select:none}
+.card .ph{display:block;width:100%;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:var(--panel)}
+.card img{width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform 1.2s var(--ease)}
+.card:hover img{transform:scale(1.04)}
+.card .t{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:400;margin-top:4px}
+.card .s{font-size:13px;color:var(--muted);margin-top:-8px}
+
+/* project */
+.view{padding-top:clamp(18px,2.4vw,32px)}
+.view.home,.view.contact{padding-top:0}
+.project{padding-bottom:0}
+.rule{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:14px 0 0;font-family:var(--display);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);font-weight:400}
+.head{padding:clamp(20px,3vw,36px) 0 clamp(28px,4.5vw,60px);align-items:start}
+.hl{grid-column:1 / span 6}
+.text{grid-column:7 / span 6;padding-top:clamp(8px,1.2vw,18px)}
+h2{font-family:var(--display);font-weight:400;color:var(--ink);font-size:clamp(44px,7.4vw,104px);line-height:1;letter-spacing:-.015em;margin:0 0 clamp(20px,2.6vw,34px);margin-left:-.05em}
+dl{margin:0;display:grid;grid-template-columns:7em 1fr;gap:7px 0;font-size:14px;max-width:34em}
+dt{color:var(--muted)}
+dd{margin:0;color:var(--ink)}
+.text p{margin:0 0 14px;max-width:58ch;text-wrap:pretty}
+.text .lead{font-size:clamp(19px,1.9vw,24px);line-height:1.42;color:var(--ink);font-weight:300}
+figure{margin:0 0 var(--g)}
+.ph{aspect-ratio:3/4;overflow:hidden;background:var(--panel)}
+.c12 .ph{aspect-ratio:1700/949}
+.ph img{width:100%;height:100%;object-fit:cover}
+figcaption{font-size:12px;letter-spacing:.04em;color:var(--muted);padding:9px 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* about, contact */
+.about h2,.contact h2{font-size:clamp(40px,5.4vw,72px)}
+.about-cols{padding-top:clamp(20px,3vw,36px)}
+.about-cols>div{grid-column:span 8}
+.about-cols p{max-width:56ch;margin:0 0 14px;font-size:clamp(17px,1.5vw,20px);line-height:1.5;color:var(--ink)}
+.list{list-style:none;margin:0;padding:0;font-size:15px}
+.list li{display:grid;grid-template-columns:8.5em 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line);color:var(--ink)}
+.list li:last-child{border-bottom:1px solid var(--line)}
+.list span{color:var(--muted)}
+h3{font-family:var(--display);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:400;margin:0 0 10px}
+.block+.block{margin-top:30px}
+
+.contact{color:var(--text);text-align:center;padding:clamp(64px,10vw,128px) var(--pad)}
+
+.hn{display:block;height:auto}
+.hn.big{width:clamp(190px,21vw,290px);margin:0 auto clamp(6px,1.4vw,18px)}
+.mail{display:inline-block;font-family:var(--display);font-weight:400;color:var(--ink);font-size:clamp(22px,3.6vw,48px);letter-spacing:-.01em;text-decoration:none;background:linear-gradient(var(--blue),var(--blue)) 0 100%/0 1px no-repeat;transition:background-size .7s var(--ease);padding-bottom:6px}
+.mail:hover{background-size:100% 1px}
+.enq{margin:0 0 18px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;margin-top:34px}
+.links a{text-decoration:none;color:var(--muted);transition:color .3s}
+.links a:hover{color:var(--ink)}
+.sign{margin-top:clamp(56px,8vw,96px);color:#fff;letter-spacing:.3em}
+.note{margin:18px auto 0;font-size:12px;color:#7d8a91;max-width:74ch;padding:0 var(--pad)}
+
+/* movement on scroll: text rises, images uncover from the top, the rule draws from the left */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform 1.1s var(--ease);transition-delay:calc(var(--i,0)*110ms)}
+.js .rv.in{opacity:1;transform:none}
+.js figure.rv{opacity:1;transform:none}
+.js figure.rv .ph{clip-path:inset(0 0 100% 0);transition:clip-path 1.25s var(--ease);transition-delay:calc(var(--i,0)*120ms)}
+.js figure.rv .ph img{transform:scale(1.08);transition:transform 1.8s var(--ease);transition-delay:calc(var(--i,0)*120ms)}
+.js figure.rv figcaption{opacity:0;transition:opacity .8s .5s}
+.js figure.rv.in .ph{clip-path:inset(0)}
+.js figure.rv.in .ph img{transform:none}
+.js figure.rv.in figcaption{opacity:1}
+.js .rule.rv{opacity:1;transform:none;border-top-color:transparent;background:linear-gradient(var(--line),var(--line)) 0 0/0 1px no-repeat;transition:background-size 1.4s var(--ease)}
+.js .rule.rv.in{background-size:100% 1px}
+.js .rule.rv span{opacity:0;transition:opacity .8s .4s}
+.js .rule.rv.in span{opacity:1}
+
+@media (max-width:760px){
+  .top .wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;height:auto;padding-top:12px;padding-bottom:10px;gap:8px 26px}
+  .brand{order:-1;flex-basis:100%;justify-content:center}
+  .top nav{gap:26px}
+  .hl,.text,.about-cols>div{grid-column:1 / -1}
+  .text{padding-top:26px}
+  .about-cols>div+div{margin-top:34px}
+  .c4{grid-column:span 12}
+  .c6{grid-column:span 12}
+  figcaption{white-space:normal}
+}
+@media (min-width:480px) and (max-width:760px){.c6{grid-column:span 6}.c4{grid-column:span 4}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .mark{animation:none}
+  .js .rv,.js figure.rv .ph,.js figure.rv .ph img,.js figure.rv figcaption,.js .rule.rv,.js .rule.rv span{transition:none;opacity:1;transform:none;clip-path:none;background-size:100% 1px}
+  .flow{overflow-x:auto;cursor:auto}
+}
+
+/* views: one screen at a time */
+.js .view{display:none}
+.js .view.on{display:block}
+.js .view.contact.on{min-height:calc(100svh - 61px);display:flex;flex-direction:column;justify-content:center;align-items:center;padding-bottom:clamp(40px,8vh,96px)}
+.js .view.home.on{display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - 61px);padding-bottom:clamp(12px,3vh,36px)}
+.top a.cur{color:var(--ink)}
+h2.sm{font-size:clamp(40px,5.4vw,72px)}
+.head:has(h2.sm){padding-bottom:0}
+
+/* the line under the row */
+.home>.wrap{width:100%}
+.all{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);text-decoration:none;color:var(--ink);padding:6px 0}
+.all::before,.all::after{content:"";flex:1;height:1px;background:var(--line);transition:background .4s}
+.all span{transition:letter-spacing .5s var(--ease),color .3s}
+.all:hover span{letter-spacing:.3em;color:var(--blue)}
+.all:hover::before,.all:hover::after{background:var(--blue)}
+
+/* all projects */
+.tiles{padding-top:var(--g)}
+.tile{text-decoration:none;display:block}
+.tile .ph{display:block}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.tile:hover img{transform:scale(1.04)}
+.tile .t{display:block;color:var(--ink);padding-top:14px}
+.tile .s{display:block;font-size:13px;color:var(--muted);padding-top:2px}
+.js .tile.rv .ph{clip-path:inset(0 0 100% 0);transition:clip-path 1.25s var(--ease);transition-delay:calc(var(--i,0)*120ms)}
+.js .tile.rv.in .ph{clip-path:inset(0)}
+
+.pager{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;border-top:1px solid var(--line);margin-top:clamp(28px,4vw,56px);padding:18px 0 0}
+.pager a{text-decoration:none;color:var(--muted);transition:color .3s}
+.pager a:hover{color:var(--ink)}
+.pager a:last-child{text-align:right}
+
+.press{list-style:none;margin:clamp(20px,3vw,36px) 0 0;padding:0}
+.press li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);align-items:baseline;padding:18px 0;border-top:1px solid var(--line);color:var(--ink)}
+.press li:last-child{border-bottom:1px solid var(--line)}
+.press .y{grid-column:span 2;color:var(--muted)}
+.press .k{grid-column:span 2;color:var(--blue)}
+.press .d{grid-column:span 6;font-size:clamp(17px,1.5vw,20px);line-height:1.45}
+.press a,.press li>span:last-child{grid-column:span 2;text-align:right;text-decoration:none;color:var(--muted)}
+.press a:hover{color:var(--ink)}
+
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:clamp(56px,8vw,112px);padding:18px 0 26px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--ink)}
+body[data-view=home] .foot,body[data-view=contact] .foot{display:none}
+
+/* opening: the name, then the work */
+.opening{display:none}
+.js .opening{position:fixed;inset:0;z-index:50;background:var(--paper) url(img/paper.png) 0 0/320px;display:grid;place-content:center;justify-items:center;transition:opacity 1s ease,visibility 0s 1s}
+.opening .hn{width:clamp(200px,22vw,300px);margin:0 0 clamp(2px,1vw,10px);opacity:0;animation:pressin 1.6s var(--ease) .2s forwards}
+.opening .nm{font-family:var(--display);color:var(--ink);font-size:clamp(11px,1vw,13px);text-transform:uppercase;letter-spacing:.46em;margin-right:-.46em;opacity:0;animation:rise 1.2s var(--ease) 1s forwards;white-space:nowrap}
+.opening.gone{opacity:0;visibility:hidden}
+.opening.off{display:none}
+@keyframes pressin{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.js .home .flow,.js .home .all{opacity:0;transform:translateY(18px);transition:opacity 1.1s var(--ease),transform 1.3s var(--ease)}
+.js .home .all{transition-delay:.25s}
+.js .home.ready .flow,.js .home.ready .all{opacity:1;transform:none}
+
+@media (max-width:760px){
+  .card{width:clamp(180px,min(58vw,calc((100svh - 330px)*.75)),420px)}
+  .tile.c4{grid-column:span 6}
+  .press .y{grid-column:span 3}.press .k{grid-column:span 9;text-align:right}
+  .press .d{grid-column:1 / -1;padding-top:8px}
+  .press a,.press li>span:last-child{grid-column:1 / -1;text-align:left;padding-top:8px}
+  .pager{font-size:11px}
+  .js .view.home.on{min-height:calc(100svh - 86px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .opening .hn,.opening .nm{animation:none;opacity:1}
+  .js .home .flow,.js .home .all{opacity:1;transform:none;transition:none}
+}
+.lede{max-width:62ch;margin:clamp(28px,4.5vw,64px) auto clamp(36px,5vw,72px);text-align:center;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--text);text-wrap:balance}
+.card .ph,.tile .ph{position:relative}
+.tiles{column-gap:clamp(8px,1vw,14px);row-gap:clamp(8px,1vw,14px)}
+.tile .ph{overflow:hidden;border-radius:clamp(22px,3vw,44px)}
+.tile.mark-tile .ph{display:grid;place-items:center;background:color-mix(in srgb,var(--panel) 40%,transparent)}
+.tile.mark-tile .hn{width:52%;height:auto;object-fit:contain}
+.gl{position:absolute;left:var(--mx,50%);top:var(--my,50%);transform:translate(-50%,-50%) scale(.92);padding:11px 22px 10px;border-radius:999px;color:var(--ink);white-space:nowrap;pointer-events:none;
+  background:rgba(246,248,249,.42);border:1px solid rgba(255,255,255,.6);-webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
+  opacity:0;transition:opacity .45s var(--ease),transform .6s var(--ease)}
+a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)}
+@media (hover:none){.gl{opacity:1;left:50%;top:auto;bottom:11%;transform:translate(-50%,0);font-size:10px;padding:8px 16px 7px}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<div class="opening" aria-hidden="true"><img class="hn big" src="img/hn-press.png" alt="" width="895" height="1000"><span class="nm">Hadis Narimani</span></div>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="l caps" aria-label="Work">
+      <a href="#/projects" data-nav="projects">Projects</a>
+      <a href="#/press" data-nav="press">Press</a>
+    </nav>
+    <a class="brand caps" href="#/" aria-label="Hadis Narimani, home">Hadis Narimani</a>
+    <nav class="r caps" aria-label="Studio">
+      <a href="#/about" data-nav="about">About</a>
+      <a href="#/contact" data-nav="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="view home" data-view="home">
+    <section class="flow" aria-label="Projects">
+    <div class="track">
+        <a class="card" href="#/couched"><span class="ph"><img src="img/couched-01-entrance.jpg" alt="COUCHED boutique entrance, a loop of overlapping metal discs around a doorway"></span><span class="t">Couched</span><span class="s">Retail boutique</span></a>
+        <a class="card" href="#/maille"><span class="ph"><img src="img/maille-04-corridor.jpg" alt="Maille hotel corridor with a band of beadwork along a curved plaster wall"></span><span class="t">Maille</span><span class="s">Hotel, Dubai</span></a>
+        <a class="card" href="#/kaolin"><span class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Kaolin arrival hall with circular openings framing the sea"></span><span class="t">Kaolin</span><span class="s">Coastal hotel</span></a>
+        <a class="card" href="#/laque"><span class="ph"><img src="img/laque-01-lounge.jpg" alt="Laque lounge with curved lacquer and tinted glass screens"></span><span class="t">Laque</span><span class="s">Thermal house and hotel</span></a>
+        <a class="card" href="#/rocaille"><span class="ph"><img src="img/rocaille-06-reception.jpg" alt="Rocaille reception hall with folded mosaic walls, stone flowers and a carved stone desk"></span><span class="t">Rocaille</span><span class="s">Hotel and spa</span></a>
+    </div>
+    </section>
+    <div class="wrap"><a class="all caps" href="#/projects"><span>All projects</span></a></div>
+  </section>
+  <section class="view" data-view="projects">
+    <div class="wrap">
+      <p class="lede rv">Retail and hospitality interiors. Each project takes one piece of fashion or craft and rebuilds the way it is made as space, material and light.</p>
+      <div class="rule rv"><span>Interiors</span><span>5 projects</span></div>
+      <div class="row tiles">
+        <a class="tile c4 rv" style="--i:0" href="#/couched"><span class="ph"><img src="img/couched-01-entrance.jpg" alt="COUCHED boutique entrance, a loop of overlapping metal discs around a doorway" loading="lazy"><span class="gl caps">Couched</span></span></a>
+        <a class="tile c4 rv" style="--i:1" href="#/maille"><span class="ph"><img src="img/maille-04-corridor.jpg" alt="Maille hotel corridor with a band of beadwork along a curved plaster wall" loading="lazy"><span class="gl caps">Maille</span></span></a>
+        <a class="tile c4 rv" style="--i:2" href="#/kaolin"><span class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Kaolin arrival hall with circular openings framing the sea" loading="lazy"><span class="gl caps">Kaolin</span></span></a>
+        <a class="tile c4 rv" style="--i:0" href="#/laque"><span class="ph"><img src="img/laque-01-lounge.jpg" alt="Laque lounge with curved lacquer and tinted glass screens" loading="lazy"><span class="gl caps">Laque</span></span></a>
+        <a class="tile c4 rv" style="--i:1" href="#/rocaille"><span class="ph"><img src="img/rocaille-06-reception.jpg" alt="Rocaille reception hall with folded mosaic walls, stone flowers and a carved stone desk" loading="lazy"><span class="gl caps">Rocaille</span></span></a>
+      </div>
+    </div>
+  </section>
+  <section class="view project" data-view="couched">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Retail</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Couched</h2>
+          <dl>
+            <dt>Type</dt><dd>Fashion boutique</dd>
+            <dt>Status</dt><dd>Unrealised concept, 2026</dd>
+            <dt>Source</dt><dd>Couching embroidery</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">Couching is an embroidery technique: a cord is laid on the surface of the cloth and stitched down. COUCHED applies that rule to a shop.</p>
+          <p>The walls are pleated velvet, the ground cloth. Cord and sequin are laid over it and fixed only where a customer arrives, passes through or reaches: the entrance, the door frame, the rails and the fitting room.</p>
+          <p>At the entrance the laid cord becomes a loop of overlapping metal discs with a sequin lining. Inside, the same wrap reduces to the scale of a hanging rail.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/couched-01-entrance.jpg" alt="Entrance: a loop of overlapping metal discs with a teal sequin lining around the door" loading="lazy"></div><figcaption>Entrance</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/couched-03-doorframe.jpg" alt="Door frame wrapped in cord and sequin against pleated velvet" loading="lazy"></div><figcaption>Door frame</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/couched-02-store.jpg" alt="Shop floor with velvet walls, wrapped rails and the framed doorway" loading="lazy"></div><figcaption>Shop floor</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/couched-04-rail.jpg" alt="Hanging rail with sequin fields gathered behind each fixing point" loading="lazy"></div><figcaption>Rail</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/couched-05-fitting.jpg" alt="Fitting room with coiled cord and sequin panels" loading="lazy"></div><figcaption>Fitting room</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/rocaille">← Rocaille</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/maille">Maille →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="maille">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Maille</h2>
+          <dl>
+            <dt>Type</dt><dd>Hotel interiors, Dubai</dd>
+            <dt>Status</dt><dd>Unrealised concept, 2026</dd>
+            <dt>Source</dt><dd>Couture beadwork</dd>
+            <dt>Award</dt><dd>SBID International Design Awards 2026, Regional Winner, Middle East, CGI &amp; Visualisation</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">One beadwork language, varied only in density and placement, gives each space its own character while holding the hotel together.</p>
+          <p>In couture beadwork, beads gather at points of emphasis and thin out elsewhere. In the hotel they concentrate at reception, expand across the bar wall, run as a directional band along the corridor and reduce to a single band in the spa.</p>
+          <p>Social spaces carry the most worked surface. Quiet spaces carry the least.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c12 rv" style="--i:0"><div class="ph"><img src="img/maille-01-sheet.jpg" alt="Analysis sheet: one language, four spatial conditions. Reception concentrate, bar expand, corridor direct, spa reduce" loading="lazy"></div><figcaption>The rule: concentrate, expand, direct, reduce</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c12 rv" style="--i:0"><div class="ph"><img src="img/maille-02-reception.jpg" alt="Reception with beadwork concentrated on a plaster drum behind the desk" loading="lazy"></div><figcaption>Reception: concentrate</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/maille-03-bar.jpg" alt="Bar with a broad field of beadwork across the wall" loading="lazy"></div><figcaption>Bar: expand</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/maille-04-corridor.jpg" alt="Corridor with a band of beadwork leading along the curved wall" loading="lazy"></div><figcaption>Corridor: direct</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/maille-05-spa.jpg" alt="Spa treatment room with a single band of beadwork" loading="lazy"></div><figcaption>Spa: reduce</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/maille-06-linen.jpg" alt="Material study: beads stitched into linen" loading="lazy"></div><figcaption>Material study: bead on linen</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/maille-07-plaster.jpg" alt="Material study: beads set in plaster" loading="lazy"></div><figcaption>Material study: bead in plaster</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/couched">← Couched</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/kaolin">Kaolin →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="kaolin">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Kaolin</h2>
+          <dl>
+            <dt>Type</dt><dd>Coastal hotel</dd>
+            <dt>Status</dt><dd>Unrealised concept, 2026</dd>
+            <dt>Source</dt><dd>Harris Reed, Autumn/Winter 2024</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">Kaolin is the clay porcelain is made from. The hotel treats painted blue-and-white ceramic as a building surface, not as decoration placed on one.</p>
+          <p>Cobalt flowers move between glazed tile panels and raised plaster relief. Circular openings frame the sea, and a chequered stone floor carries the same two colours from the arrival hall to the terrace and the boutique.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Arrival hall: circular plaster openings in line with the sea, tile panels to each side" loading="lazy"></div><figcaption>Arrival hall</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/kaolin-02-lounge.jpg" alt="Lounge: relief plaster wall with painted cobalt flowers and a backlit disc" loading="lazy"></div><figcaption>Lounge wall</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/kaolin-04-terrace.jpg" alt="Terrace with timber roof, woven ceiling disc and a blue carved screen" loading="lazy"></div><figcaption>Terrace</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/kaolin-03-lounge2.jpg" alt="Lounge with relief wall, lacquered columns and sea view" loading="lazy"></div><figcaption>Lounge</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/kaolin-05-boutique.jpg" alt="Hotel boutique with painted ceramic panels, a backlit mirror and a stone display" loading="lazy"></div><figcaption>Hotel boutique</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/maille">← Maille</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/laque">Laque →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="laque">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Laque</h2>
+          <dl>
+            <dt>Type</dt><dd>Urban thermal house and collector's hotel</dd>
+            <dt>Status</dt><dd>Unrealised concept, 2026</dd>
+            <dt>Source</dt><dd>A wrapped, ombré couture piece</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">A garment that wraps the body in graded colour becomes a set of curved screens that wrap the room.</p>
+          <p>Lacquer and tinted glass turn around the seating, the bath and the stair, moving from amber through oxblood to aubergine. The surrounding walls stay matt and olive so the gloss reads as the only worked surface.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/laque-01-lounge.jpg" alt="Double-height lounge with overlapping lacquer and glass screens" loading="lazy"></div><figcaption>Lounge</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/laque-03-lounge2.jpg" alt="Lounge seating wrapped by a curved screen in oxblood and amber" loading="lazy"></div><figcaption>Lounge seating</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/laque-04-bath.jpg" alt="Bath enclosed by a cylinder of tinted glass" loading="lazy"></div><figcaption>Bath</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/laque-05-stair.jpg" alt="Stair with a balustrade of tinted glass fins" loading="lazy"></div><figcaption>Stair</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/laque-02-dining.jpg" alt="Dining room with a lacquered table and tinted glass panels at the window" loading="lazy"></div><figcaption>Dining room</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/kaolin">← Kaolin</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/rocaille">Rocaille →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="rocaille">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Rocaille</h2>
+          <dl>
+            <dt>Type</dt><dd>Hotel and spa</dd>
+            <dt>Status</dt><dd>Unrealised concept, 2026</dd>
+            <dt>Source</dt><dd>Bead-loom couture</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">On a bead loom, an image is built from small units set in rows. Rocaille builds its walls the same way.</p>
+          <p>The unit here is the mosaic piece. Flowers are built square by square, with a bronze line running between them like the thread. The pattern changes scale from room to room: tall and loose in the reception hall, cut into panels along the corridor, fine and continuous from wall to floor around the pools.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/rocaille-06-reception.jpg" alt="Reception hall: tall folded walls of pale mosaic with stone flowers, bronze lines and a carved stone desk" loading="lazy"></div><figcaption>Reception hall</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/rocaille-05-lobby.jpg" alt="Lift lobby: mosaic walls with raised stone flowers, plaster columns and bronze door frames" loading="lazy"></div><figcaption>Lift lobby</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/rocaille-08-spa.jpg" alt="Spa pool under a roof light, with a mosaic of leaves running from the arched walls across the floor" loading="lazy"></div><figcaption>Spa pool</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/rocaille-09-pool.jpg" alt="Swimming pool with vaulted mosaic niches and flowers that continue from wall to floor" loading="lazy"></div><figcaption>Swimming pool</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/rocaille-07-corridor.jpg" alt="Corridor of angled plaster panels with blocks of coloured stone mosaic and plaster relief" loading="lazy"></div><figcaption>Corridor</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/rocaille-04-wine.jpg" alt="Wine room with loose stone mosaic on a vaulted ceiling" loading="lazy"></div><figcaption>Wine room</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/laque">← Laque</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/couched">Couched →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view" data-view="press">
+    <div class="wrap">
+      <div class="rule rv"><span>Press</span><span>Awards and publications</span></div>
+      <div class="row head"><div class="hl rv"><h2 class="sm">Press</h2></div></div>
+      <ul class="press rv">
+        <li><span class="y">2026</span><span class="k caps">Award</span><span class="d">SBID International Design Awards 2026. Regional Winner, Middle East, CGI &amp; Visualisation, for Maille.</span><a class="caps" href="https://www.sbidawards.com/winners/awards-2026/interior-design-awards/">SBID Awards ↗</a></li>
+        <li><span class="y">2026</span><span class="k caps">Feature</span><span class="d">"Maille: when beadwork becomes a rule for space". Hotel Designs.</span><a class="caps" href="https://hoteldesigns.net/2026/maille-when-beadwork-becomes-a-rule-for-space/">Read ↗</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="view" data-view="about">
+    <div class="wrap">
+      <div class="rule rv"><span>About</span><span>Commercial Interior Designer</span></div>
+      <div class="row head"><div class="hl rv"><h2 class="sm">About</h2></div></div>
+      <div class="row about-cols rv"><div class="bio">
+          <p>Hadis Narimani is a commercial interior designer working on retail and hospitality interiors at concept stage.</p>
+          <p>Her method is technique transfer. She takes the construction logic of a garment or a craft, such as beadwork, couching or wrapping, and translates it into spatial hierarchy, material roles and atmosphere.</p>
+          <p>She trained in the UK and works internationally.</p>
+        </div>
+        </div>
+    </div>
+  </section>
+  <section class="view contact" data-view="contact">
+    <img class="hn big" src="img/hn-press.png" alt="" width="895" height="1000">
+    <p class="enq caps">For enquiries</p>
+    <a class="mail" href="mailto:hadisnarmani@gmail.com">hadisnarmani@gmail.com</a>
+    <div class="links caps">
+      <a href="https://www.behance.net/hadisnarimani1">Behance</a>
+      <a href="https://www.instagram.com/hadisnarimani_/">Instagram</a>
+      <a href="https://uk.pinterest.com/hadisnarimani_/">Pinterest</a>
+    </div>
+  </section>
+  <footer class="wrap"><div class="foot"><span>© 2026 Hadis Narimani. Commercial Interior Designer. All projects on this site are unrealised concepts.</span><a href="#/contact">Contact</a></div></footer>
+</main>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var views={};[].forEach.call(document.querySelectorAll('.view'),function(v){views[v.getAttribute('data-view')]=v});
+  var projects=["couched", "maille", "kaolin", "laque", "rocaille"];
+  var home=views.home,flow=home.querySelector('.flow'),track=flow.querySelector('.track');
+  var opening=document.querySelector('.opening');
+
+  // reveal on scroll
+  var io=null;
+  if(!reduce&&'IntersectionObserver' in window){
+    io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.06});
+  }
+  function arm(view){
+    [].forEach.call(view.querySelectorAll('.rv'),function(e){
+      if(!io){e.classList.add('in');return}
+      e.classList.remove('in');io.observe(e);
+    });
+  }
+
+  // the current: cards drift, rise and fall slightly, largest on the centre axis
+  var base=[].slice.call(track.children),cards=base,setW=0,lefts=[],cw=0,vw=0;
+  if(!reduce){for(var k=0;k<3;k++)base.forEach(function(c){var n=c.cloneNode(true);n.setAttribute('aria-hidden','true');n.tabIndex=-1;track.appendChild(n)});cards=[].slice.call(track.children)}
+  function measure(){
+    if(reduce||!home.classList.contains('on'))return;
+    cards.forEach(function(c){c.style.transform=''});
+    lefts=cards.map(function(c){return c.offsetLeft});
+    setW=lefts[base.length]-lefts[0];cw=cards[0].offsetWidth;vw=flow.clientWidth;
+  }
+  var x=0,speed=26,target=26,last=0,dragging=false,sx=0,sx0=0,moved=0;
+  function frame(t){
+    requestAnimationFrame(frame);
+    var dt=Math.min(.05,(t-last)/1000||0);last=t;
+    if(!setW||!home.classList.contains('on'))return;
+    speed+=(target-speed)*Math.min(1,dt*4);
+    if(!dragging)x-=speed*dt;
+    while(x<=-setW)x+=setW;while(x>0)x-=setW;
+    track.style.transform='translate3d('+x.toFixed(2)+'px,0,0)';
+    for(var i=0;i<cards.length;i++){
+      var c=lefts[i]+cw/2+x;
+      if(c<-cw||c>vw+cw)continue;
+      var d=(c-vw/2)/(vw/2),a=Math.min(1,Math.abs(d));
+      var y=Math.sin(c/300+t/2600)*8+a*a*12;
+      cards[i].style.transform='translate3d(0,'+y.toFixed(2)+'px,0) scale('+(1-a*a*.1).toFixed(4)+')';
+    }
+  }
+  if(!reduce){
+    flow.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')target=6});
+    flow.addEventListener('pointerleave',function(){target=26});
+    flow.addEventListener('pointerdown',function(e){dragging=true;moved=0;sx=e.clientX;sx0=x;flow.classList.add('drag')});
+    window.addEventListener('pointermove',function(e){if(!dragging)return;moved=Math.abs(e.clientX-sx);x=sx0+(e.clientX-sx)});
+    window.addEventListener('pointerup',function(){dragging=false;flow.classList.remove('drag')});
+    flow.addEventListener('click',function(e){if(moved>6)e.preventDefault()},true);
+    window.addEventListener('resize',measure);window.addEventListener('load',measure);
+    requestAnimationFrame(frame);
+  }
+
+  // the frosted name follows the pointer inside each cover
+  document.addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse')return;
+    var a=e.target.closest&&e.target.closest('a.tile');if(!a)return;
+    var r=a.querySelector('.ph').getBoundingClientRect(),g=a.querySelector('.gl');
+    g.style.setProperty('--mx',Math.max(26,Math.min(74,(e.clientX-r.left)/r.width*100))+'%');
+    g.style.setProperty('--my',Math.max(16,Math.min(84,(e.clientY-r.top)/r.height*100))+'%');
+  });
+
+  // views
+  var first=true;
+  function route(){
+    var h=location.hash.replace(/^#\/?/,'')||'home';
+    if(!views[h])h='home';
+    for(var k in views)views[k].classList.toggle('on',k===h);
+    document.body.setAttribute('data-view',h);
+    [].forEach.call(document.querySelectorAll('[data-nav]'),function(a){
+      var n=a.getAttribute('data-nav');a.classList.toggle('cur',n===h||(n==='projects'&&projects.indexOf(h)>-1));
+    });
+    document.title=(h==='home'?'':(views[h].querySelector('h2')||{textContent:h.charAt(0).toUpperCase()+h.slice(1)}).textContent+' · ')+'Hadis Narimani Interior Design';
+    window.scrollTo(0,0);
+    arm(views[h]);
+    if(h==='home')measure();
+    if(first){setTimeout(function(){opening.classList.add('gone');home.classList.add('ready')},reduce?1600:3000)}
+    else{opening.classList.add('off');home.classList.add('ready')}
+    first=false;
+  }
+  window.addEventListener('hashchange',route);
+  route();
+})();
+</script>
+</body>
+</html>
