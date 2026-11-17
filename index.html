@@ -241,6 +241,10 @@ body[data-view=home] .foot,body[data-view=contact] .foot{display:none}
   opacity:0;transition:opacity .45s var(--ease),transform .6s var(--ease)}
 a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)}
 @media (hover:none){.gl{opacity:1;left:50%;top:auto;bottom:11%;transform:translate(-50%,0);font-size:10px;padding:8px 16px 7px}}
+.tiles .tile:nth-child(3n+1):nth-last-child(2){grid-column:3 / span 4}
+.tiles .tile:nth-child(3n+2):last-child{grid-column:7 / span 4}
+.tiles .tile:nth-child(3n+1):last-child{grid-column:5 / span 4}
+@media (max-width:760px){.tiles .tile:nth-child(n){grid-column:span 6}.tiles .tile:nth-child(odd):last-child{grid-column:4 / span 6}}
 </style>
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -252,6 +256,7 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
   <div class="wrap">
     <nav class="l caps" aria-label="Work">
       <a href="#/projects" data-nav="projects">Projects</a>
+      <a href="#/objects" data-nav="objects">Objects</a>
       <a href="#/press" data-nav="press">Press</a>
     </nav>
     <a class="brand caps" href="#/" aria-label="Hadis Narimani, home">Hadis Narimani</a>
@@ -269,9 +274,15 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
     <div class="track">
         <a class="card" href="#/couched"><span class="ph"><img src="img/couched-01-entrance.jpg" alt="COUCHED boutique entrance, a loop of overlapping metal discs around a doorway"></span><span class="t">Couched</span><span class="s">Retail boutique concept</span></a>
         <a class="card" href="#/maille"><span class="ph"><img src="img/maille-04-corridor.jpg" alt="Maille hotel corridor with a band of beadwork along a curved plaster wall"></span><span class="t">Maille</span><span class="s">Hotel concept · Dubai</span></a>
+        <a class="card" href="#/lapis"><span class="ph"><img src="img/lapis-01-hall.jpg" alt="Lapis great hall with a faceted nickel chandelier"></span><span class="t">Lapis</span><span class="s">Hotel concept</span></a>
         <a class="card" href="#/kaolin"><span class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Kaolin arrival hall with circular openings framing the sea"></span><span class="t">Kaolin</span><span class="s">Coastal hotel concept</span></a>
         <a class="card" href="#/laque"><span class="ph"><img src="img/laque-01-lounge.jpg" alt="Laque lounge with curved lacquer and tinted glass screens"></span><span class="t">Laque</span><span class="s">Thermal house and hotel concept</span></a>
         <a class="card" href="#/rocaille"><span class="ph"><img src="img/rocaille-06-reception.jpg" alt="Rocaille reception hall with folded mosaic walls, stone flowers and a carved stone desk"></span><span class="t">Rocaille</span><span class="s">Hotel and spa concept</span></a>
+        <a class="card" href="#/palimpsest"><span class="ph"><img src="img/pal-04-entrance.jpg" alt="Palimpsest entrance wall with a curved mosaic-lined mirror"></span><span class="t">Palimpsest</span><span class="s">Boutique hotel concept</span></a>
+        <a class="card" href="#/passementerie"><span class="ph"><img src="img/pas-03-threshold.jpg" alt="Passementerie threshold with a radiating fringe panel"></span><span class="t">Passementerie</span><span class="s">Retail concept</span></a>
+        <a class="card" href="#/veil"><span class="ph"><img src="img/veil-05-screen.jpg" alt="Veil frosted glass screen with applied flowers"></span><span class="t">Veil</span><span class="s">Bar and lounge concept</span></a>
+        <a class="card" href="#/nacre"><span class="ph"><img src="img/nacre-01.jpg" alt="Nacre boutique with mother-of-pearl inlaid panelling"></span><span class="t">Nacre</span><span class="s">Retail and café concept</span></a>
+        <a class="card" href="#/pli"><span class="ph"><img src="img/pli-01-bar.jpg" alt="Pli bar under a folded oxblood and gold canopy"></span><span class="t">Pli</span><span class="s">Restaurant and bar concept</span></a>
     </div>
     </section>
     <div class="wrap"><a class="all caps" href="#/projects"><span>All projects</span></a></div>
@@ -283,9 +294,15 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
       <div class="row tiles">
         <a class="tile c4 rv" style="--i:0" href="#/couched"><span class="ph"><img src="img/couched-01-entrance.jpg" alt="COUCHED boutique entrance, a loop of overlapping metal discs around a doorway" loading="lazy"><span class="gl caps">Couched</span></span></a>
         <a class="tile c4 rv" style="--i:1" href="#/maille"><span class="ph"><img src="img/maille-04-corridor.jpg" alt="Maille hotel corridor with a band of beadwork along a curved plaster wall" loading="lazy"><span class="gl caps">Maille</span></span></a>
-        <a class="tile c4 rv" style="--i:2" href="#/kaolin"><span class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Kaolin arrival hall with circular openings framing the sea" loading="lazy"><span class="gl caps">Kaolin</span></span></a>
-        <a class="tile c4 rv" style="--i:0" href="#/laque"><span class="ph"><img src="img/laque-01-lounge.jpg" alt="Laque lounge with curved lacquer and tinted glass screens" loading="lazy"><span class="gl caps">Laque</span></span></a>
-        <a class="tile c4 rv" style="--i:1" href="#/rocaille"><span class="ph"><img src="img/rocaille-06-reception.jpg" alt="Rocaille reception hall with folded mosaic walls, stone flowers and a carved stone desk" loading="lazy"><span class="gl caps">Rocaille</span></span></a>
+        <a class="tile c4 rv" style="--i:2" href="#/lapis"><span class="ph"><img src="img/lapis-01-hall.jpg" alt="Lapis great hall with a faceted nickel chandelier" loading="lazy"><span class="gl caps">Lapis</span></span></a>
+        <a class="tile c4 rv" style="--i:0" href="#/kaolin"><span class="ph"><img src="img/kaolin-01-arrival.jpg" alt="Kaolin arrival hall with circular openings framing the sea" loading="lazy"><span class="gl caps">Kaolin</span></span></a>
+        <a class="tile c4 rv" style="--i:1" href="#/laque"><span class="ph"><img src="img/laque-01-lounge.jpg" alt="Laque lounge with curved lacquer and tinted glass screens" loading="lazy"><span class="gl caps">Laque</span></span></a>
+        <a class="tile c4 rv" style="--i:2" href="#/rocaille"><span class="ph"><img src="img/rocaille-06-reception.jpg" alt="Rocaille reception hall with folded mosaic walls, stone flowers and a carved stone desk" loading="lazy"><span class="gl caps">Rocaille</span></span></a>
+        <a class="tile c4 rv" style="--i:0" href="#/palimpsest"><span class="ph"><img src="img/pal-04-entrance.jpg" alt="Palimpsest entrance wall with a curved mosaic-lined mirror" loading="lazy"><span class="gl caps">Palimpsest</span></span></a>
+        <a class="tile c4 rv" style="--i:1" href="#/passementerie"><span class="ph"><img src="img/pas-03-threshold.jpg" alt="Passementerie threshold with a radiating fringe panel" loading="lazy"><span class="gl caps">Passementerie</span></span></a>
+        <a class="tile c4 rv" style="--i:2" href="#/veil"><span class="ph"><img src="img/veil-05-screen.jpg" alt="Veil frosted glass screen with applied flowers" loading="lazy"><span class="gl caps">Veil</span></span></a>
+        <a class="tile c4 rv" style="--i:0" href="#/nacre"><span class="ph"><img src="img/nacre-01.jpg" alt="Nacre boutique with mother-of-pearl inlaid panelling" loading="lazy"><span class="gl caps">Nacre</span></span></a>
+        <a class="tile c4 rv" style="--i:1" href="#/pli"><span class="ph"><img src="img/pli-01-bar.jpg" alt="Pli bar under a folded oxblood and gold canopy" loading="lazy"><span class="gl caps">Pli</span></span></a>
       </div>
     </div>
   </section>
@@ -317,7 +334,7 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
         <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/couched-05-fitting.jpg" alt="Fitting room with coiled cord and sequin panels" loading="lazy"></div><figcaption>Fitting room</figcaption></figure>
       </div>
       <nav class="pager caps" aria-label="More projects">
-        <a href="#/rocaille">← Rocaille</a>
+        <a href="#/pli">← Pli</a>
         <a href="#/projects">All projects</a>
         <a href="#/maille">Maille →</a>
       </nav>
@@ -360,7 +377,7 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
       <nav class="pager caps" aria-label="More projects">
         <a href="#/couched">← Couched</a>
         <a href="#/projects">All projects</a>
-        <a href="#/kaolin">Kaolin →</a>
+        <a href="#/lapis">Lapis →</a>
       </nav>
     </div>
   </section>
@@ -391,7 +408,7 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
         <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/kaolin-05-boutique.jpg" alt="Hotel boutique with painted ceramic panels, a backlit mirror and a stone display" loading="lazy"></div><figcaption>Hotel boutique</figcaption></figure>
       </div>
       <nav class="pager caps" aria-label="More projects">
-        <a href="#/maille">← Maille</a>
+        <a href="#/lapis">← Lapis</a>
         <a href="#/projects">All projects</a>
         <a href="#/laque">Laque →</a>
       </nav>
@@ -462,8 +479,237 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
       <nav class="pager caps" aria-label="More projects">
         <a href="#/laque">← Laque</a>
         <a href="#/projects">All projects</a>
+        <a href="#/palimpsest">Palimpsest →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="lapis">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Lapis</h2>
+          <dl>
+            <dt>Type</dt><dd>Hotel</dd>
+            <dt>Stage</dt><dd>Concept design</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">Stone, walnut and nickel, with one colour held back for the details: lapis blue.</p>
+          <p>The public rooms are built as tall stone volumes lined in walnut joinery. Nickel frameworks carry the light, the glazing and the stair, and each one returns to the same stepped, faceted outline. Blue appears only in small, deliberate points: glass inside the lanterns, a stone set into a cabinet, vases on the shelves.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/lapis-01-hall.jpg" alt="Double-height hall with a stepped stone fireplace, walnut cabinets and a faceted nickel chandelier with a blue glass centre" loading="lazy"></div><figcaption>Great hall</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/lapis-05-stair.jpg" alt="Stone stair with a nickel balustrade of oval loops under a cluster of tall glass pendants" loading="lazy"></div><figcaption>Stair hall</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/lapis-03-lounge.jpg" alt="Lounge with walnut panelled doors, a stepped stone fireplace and a nickel lantern frame" loading="lazy"></div><figcaption>Lounge</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/lapis-02-library.jpg" alt="Library with walnut shelving, inlaid cabinet doors and a cabinet set with blue stone" loading="lazy"></div><figcaption>Library</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/lapis-04-garden.jpg" alt="Winter garden with a nickel and glass roof structure over a stone pool" loading="lazy"></div><figcaption>Winter garden</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/maille">← Maille</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/kaolin">Kaolin →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="palimpsest">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Palimpsest</h2>
+          <dl>
+            <dt>Type</dt><dd>Boutique hotel</dd>
+            <dt>Stage</dt><dd>Concept design</dd>
+            <dt>Source</dt><dd>A white couture gown with a curved cut-out over beadwork</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">A plain surface is cut open to show a pattern underneath. The gown does this once; Palimpsest does it in every room.</p>
+          <p>New plaster walls stand inside an old stone building and are cut along a single curve. Through each cut, black and white mosaic shows like the beadwork under the gown, edged in a thin brass line. The cut becomes a mirror at the entrance, a headboard in the bedroom and a niche in the dining room.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/pal-04-entrance.jpg" alt="Entrance with a free-standing plaster wall, a curved mosaic-lined mirror opening and a timber console" loading="lazy"></div><figcaption>Entrance</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/pal-03-bedroom.jpg" alt="Bedroom with a tall plaster headboard wall cut along a curve to reveal a lit mosaic strip" loading="lazy"></div><figcaption>Bedroom</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/pal-01-salon.jpg" alt="Salon in a vaulted stone room with a lacquered sofa set with a woven mosaic panel" loading="lazy"></div><figcaption>Salon</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/pal-02-dining.jpg" alt="Dining room with an oval stone table split by a mosaic strip, and a curved plaster screen" loading="lazy"></div><figcaption>Dining room</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/pal-05-bath.jpg" alt="Bathroom with a stone bath and a mosaic shower panel framed in brass" loading="lazy"></div><figcaption>Bathroom</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/rocaille">← Rocaille</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/passementerie">Passementerie →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="passementerie">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Retail</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Passementerie</h2>
+          <dl>
+            <dt>Type</dt><dd>Boutique</dd>
+            <dt>Stage</dt><dd>Concept design</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">Passementerie is the craft of trimmings: fringe, cord, tassel and braid. Here the trimming becomes the joinery.</p>
+          <p>Fringe is drawn out at architectural scale as radiating rods set into a curved, upholstered wall. The same edge returns as cabinet pulls, as the rail of a bar pendant and as the fine lines inlaid in the floor. Plaster flowers climb the display walls, so every room carries one trim and one ornament.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/pas-03-threshold.jpg" alt="Curved upholstered wall opening onto a radiating fringe panel, with a brass line inlaid in the floor" loading="lazy"></div><figcaption>Threshold</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/pas-01-jewellery.jpg" alt="Jewellery room with bronze-legged vitrines and a curved display wall with plaster flowers" loading="lazy"></div><figcaption>Jewellery room</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/pas-02-fragrance.jpg" alt="Fragrance room with an island counter and engraved floral cabinet doors" loading="lazy"></div><figcaption>Fragrance room</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/pas-04-bar.jpg" alt="Bar with a curved stone counter under a looped pendant of fine rods" loading="lazy"></div><figcaption>Bar</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/palimpsest">← Palimpsest</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/veil">Veil →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="veil">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Veil</h2>
+          <dl>
+            <dt>Type</dt><dd>Bar and lounge</dd>
+            <dt>Stage</dt><dd>Concept design</dd>
+            <dt>Source</dt><dd>A sheer gown with three-dimensional appliqué flowers</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">On the gown, solid flowers sit on a transparent layer. Veil keeps that order: frosted glass first, flowers applied on top.</p>
+          <p>The bar fronts and window screens are made of frosted and tinted glass, lit from behind. Cast flowers are fixed to the surface, so they stay sharp while the room behind them softens. On the walls the same flowers grow larger and turn into light fittings.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/veil-05-screen.jpg" alt="Tall frosted glass screen with applied glass flowers, blurring the street outside" loading="lazy"></div><figcaption>Window screen</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/veil-03-bar.jpg" alt="Bar front of lit frosted glass with drawn stems and applied flowers" loading="lazy"></div><figcaption>Bar front</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/veil-04-bar2.jpg" alt="Curved bar of frosted glass panels with clear glass flowers" loading="lazy"></div><figcaption>Bar</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/veil-01-reception.jpg" alt="Reception desk under a large plaster flower light in a framed recess" loading="lazy"></div><figcaption>Reception</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/veil-02-lounge.jpg" alt="Lounge banquette under a ceramic and glass flower light" loading="lazy"></div><figcaption>Lounge</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/passementerie">← Passementerie</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/nacre">Nacre →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="nacre">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Retail</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Nacre</h2>
+          <dl>
+            <dt>Type</dt><dd>Boutique and café</dd>
+            <dt>Stage</dt><dd>Concept design</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">Mother-of-pearl set into warm timber, from the shop floor to the café.</p>
+          <p>Walnut panelling, cabinets and the stair rail are inlaid with fine lines and sprays of mother-of-pearl. The inlay is kept to edges and borders, so the timber stays dominant and the pearl reads as a highlight under low light.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/nacre-01.jpg" alt="Boutique with walnut panelling inlaid with mother-of-pearl, hanging rails and display plinths" loading="lazy"></div><figcaption>Boutique</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/nacre-02.jpg" alt="Shop floor with inlaid timber shelving and display plinths" loading="lazy"></div><figcaption>Shop floor</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/nacre-03.jpg" alt="Stone stair with an inlaid timber handrail" loading="lazy"></div><figcaption>Stair</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/nacre-06.jpg" alt="Café with leather banquettes and inlaid timber walls" loading="lazy"></div><figcaption>Café</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/nacre-05.jpg" alt="Washroom with a carved timber vanity and an inlaid arched mirror" loading="lazy"></div><figcaption>Washroom</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/nacre-04.jpg" alt="Detail of a carved timber counter and brass rail" loading="lazy"></div><figcaption>Counter detail</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/veil">← Veil</a>
+        <a href="#/projects">All projects</a>
+        <a href="#/pli">Pli →</a>
+      </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="pli">
+    <div class="wrap">
+      <div class="rule rv"><span>Interiors</span><span>Hospitality</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Pli</h2>
+          <dl>
+            <dt>Type</dt><dd>Restaurant and bar</dd>
+            <dt>Stage</dt><dd>Concept design</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">Pli is French for fold. One folded form, oxblood outside and gold inside, moves through the restaurant.</p>
+          <p>Against teal plaster, the fold appears as a canopy over the bar, a screen beside the dining table, a sculpture over the stair and a frame around the washroom mirror. Each time the outer face is dark and the inner face catches the light.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c6 rv" style="--i:0"><div class="ph"><img src="img/pli-01-bar.jpg" alt="Bar under a folded oxblood canopy lined in gold leaf, against teal plaster" loading="lazy"></div><figcaption>Bar</figcaption></figure>
+        <figure class="c6 rv" style="--i:1"><div class="ph"><img src="img/pli-02-dining.jpg" alt="Dining room with a folded oxblood and gold screen on a teal wall" loading="lazy"></div><figcaption>Dining room</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/pli-03-stair.jpg" alt="Stair beneath a folded oxblood and gold wall piece" loading="lazy"></div><figcaption>Stair</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/pli-04-washroom.jpg" alt="Washroom with an oxblood and gold mirror frame over a stone basin" loading="lazy"></div><figcaption>Washroom</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/pli-05-lobby.jpg" alt="Lobby with a folded wall sculpture and a stone bench" loading="lazy"></div><figcaption>Lobby</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More projects">
+        <a href="#/nacre">← Nacre</a>
+        <a href="#/projects">All projects</a>
         <a href="#/couched">Couched →</a>
       </nav>
+    </div>
+  </section>
+  <section class="view project" data-view="objects">
+    <div class="wrap">
+      <div class="rule rv"><span>Objects</span><span>Furniture and FF&amp;E</span></div>
+      <div class="row head">
+        <div class="hl rv">
+          <h2>Objects</h2>
+          <dl>
+            <dt>Type</dt><dd>Furniture collection</dd>
+            <dt>Stage</dt><dd>Concept design</dd>
+            <dt>Material</dt><dd>Engraved brass, bouclé, leather</dd>
+          </dl>
+        </div>
+        <div class="text rv" style="--i:1">
+          <p class="lead">A family of seating built from one brass profile, engraved by hand and bent into rings, legs and rails.</p>
+          <p>The pieces share a single tube section and a single engraving pattern, so a pouf, a dining chair and an armchair read as one collection in any room. Upholstery stays pale and textured, to let the metal carry the detail.</p>
+        </div>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/obj-03-pouf.jpg" alt="Pouf with a pierced, engraved brass frame and bouclé seat" loading="lazy"></div><figcaption>Pouf</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/obj-06-pouf2.jpg" alt="Detail of the pierced brass frame and bouclé seat" loading="lazy"></div><figcaption>Pouf detail</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/obj-07-detail.jpg" alt="Engraved brass leg meeting the seat ring" loading="lazy"></div><figcaption>Frame detail</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/obj-01-set.jpg" alt="The collection together: lounge chair, pouf, bench and side tables" loading="lazy"></div><figcaption>Collection</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/obj-04-dining.jpg" alt="Dining chairs with bouclé seats around a timber table" loading="lazy"></div><figcaption>Dining chair</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/obj-08-chairs.jpg" alt="Dining chairs at a timber table" loading="lazy"></div><figcaption>Dining chairs</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure class="c4 rv" style="--i:0"><div class="ph"><img src="img/obj-09-dressing2.jpg" alt="Armchair with an engraved brass back rail in a walnut dressing room" loading="lazy"></div><figcaption>Armchair</figcaption></figure>
+        <figure class="c4 rv" style="--i:1"><div class="ph"><img src="img/obj-02-dressing.jpg" alt="Lounge chair with a curved brass back in a dressing room" loading="lazy"></div><figcaption>Lounge chair</figcaption></figure>
+        <figure class="c4 rv" style="--i:2"><div class="ph"><img src="img/obj-05-vanity.jpg" alt="Vanity chair with a pierced brass backrest" loading="lazy"></div><figcaption>Vanity chair</figcaption></figure>
+      </div>
+      <nav class="pager caps" aria-label="More"><a href="#/projects">← All projects</a><span></span><a href="#/contact">Enquiries →</a></nav>
     </div>
   </section>
   <section class="view" data-view="press">
@@ -505,7 +751,7 @@ a:hover>.ph>.gl,a:focus-visible>.ph>.gl{opacity:1;transform:translate(-50%,-50%)
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var views={};[].forEach.call(document.querySelectorAll('.view'),function(v){views[v.getAttribute('data-view')]=v});
-  var projects=["couched", "maille", "kaolin", "laque", "rocaille"];
+  var projects=["couched", "maille", "lapis", "kaolin", "laque", "rocaille", "palimpsest", "passementerie", "veil", "nacre", "pli"];
   var home=views.home,flow=home.querySelector('.flow'),track=flow.querySelector('.track');
   var opening=document.querySelector('.opening');
 
